@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delely - Personal Blog</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <style>
+        /* Header Styles */
+        .site-header {
+         background: linear-gradient(rgba(0, 0, 0, 0.564), rgba(0, 0, 0, 0.562)), url('img//me.jpg') center 7% no-repeat;
+         background-size: cover;
+         padding: 100px 0;
+         position: relative;
+         opacity: 100%;
+}
+        
+        /* Remove the white overlay */
+        .site-header::before {
+            display: none;
+        }
+
+        /* Update text colors for better visibility */
+        .site-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 48px;
+            margin-top: 100px;
+            margin-bottom: 10px;
+            position: relative;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.804);
+        }
+
+        .site-title span {
+            color: #c5a47e;
+        }
+
+        .site-description {
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 14px;
+            color: #fff;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+            position: relative;
+            margin-top: 10px;
+            padding-top: 10px;
+        }
+
+        .social-icons a {
+            color: #fff;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Navigation Styles */
+        .main-nav {
+            background: #fff;
+            padding: 20px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            position: fixed;  /* Change from sticky to fixed */
+            top: 0;
+            left: 0;  /* Add left position */
+            right: 0; /* Add right position */
+            z-index: 1000;
+        }
+
+        .nav-link {
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+            font-size: 13px;
+            color: #333 !important;
+            padding: 10px 20px !important;
+            letter-spacing: 1px;
+        }
+
+        .nav-link:hover {
+            color: #c5a47e !important;
+        }
+
+        /* Social Icons */
+        .social-icons {
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .social-icons a {
+            color: #ffffff;
+            margin: 0 10px;
+            font-size: 16px;
+            transition: color 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: #c5a47e;
+        }
+
+        /* Search Bar */
+        .search-bar {
+            max-width: 500px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 10px 20px;
+            border: 1px solid #eee;
+            border-radius: 30px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 14px;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: #c5a47e;
+        }
+
+        /* Existing blog card styles remain unchanged */
+        .blog-card {
+            margin-bottom: 30px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        .blog-card:hover {
+            transform: translateY(-5px);
+        }
+        .blog-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+        .blog-category {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: #666;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+        }
+        .blog-meta {
+            color: #666;
+            font-size: 14px;
+        }
+        .blog-title {
+            font-size: 22px;
+            font-weight: 600;
+            margin: 15px 0;
+        }
+        .blog-excerpt {
+            color: #666;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Header Section -->
+<header class="site-header text-center">
+    <div class="container">
+        <h1 class="site-title">Delely's <span></span> Blog</h1>
+        <p class="site-description">Welcome to My Blog!</p>
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-google-plus-g"></i></a>
+            <a href="#"><i class="fab fa-vimeo-v"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+    </div>
+</header>
+
+<!-- Navigation -->
+<nav class="main-nav">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <ul class="nav justify-content-center">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">HOME</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">FEATURES</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">BLOG</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">ABOUT US</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">CONTACT</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- Search Bar -->
+<div class="container mt-4">
+    <div class="search-bar">
+        <input type="text" class="search-input" placeholder="Search and hit enter...">
+    </div>
+</div>
+
+<!-- Rest of the blog content remains unchanged -->
+
+<!-- Blog Posts Section -->
+<div class="container py-5">
+    <div class="row">
+        <!-- Existing blog posts -->
+        <div class="col-md-6">
+            <article class="blog-card bg-white rounded overflow-hidden position-relative">
+                <span class="blog-category">Fun</span>
+                <img src="img/friends.jpg" alt="Blog Post" class="blog-image">
+                <div class="p-4">
+                    <div class="blog-meta">
+                        <span>By Ada Wong</span> |
+                        <span>5 March 2025</span>
+                    </div>
+                    <h2 class="blog-title">
+                        <a href="#" class="text-decoration-none text-dark">🧑‍🤝‍🧑 If Resident Evil 6 Characters Were Your Best Friends</a>
+                    </h2>
+                    <p class="blog-excerpt">
+                        Ever wondered what it would be like to hang out with Leon, Chris, or Ada? This light-hearted article imagines the RE6 characters as your real-life friends — who's the dependable one, who's always late, and who's the secret party starter.
+                    </p>
+                    <a href="#" class="btn btn-outline-dark">Read More</a>
+                </div>
+            </article>
+        </div>
+
+        <!-- Blog Post 2 -->
+        <div class="col-md-6">
+            <article class="blog-card bg-white rounded overflow-hidden position-relative">
+                <span class="blog-category">Entertainment</span>
+                <img src="img/jk.jpg" alt="Blog Post" class="blog-image">
+                <div class="p-4">
+                    <div class="blog-meta">
+                        <span>By Leon</span> |
+                        <span>22 September 2024</span>
+                    </div>
+                    <h2 class="blog-title">
+                        <a href="#" class="text-decoration-none text-dark">🎬 If Celebrities Played the Characters</a>
+                    </h2>
+                    <p class="blog-excerpt">
+                        What if your favorite Hollywood stars took over the roles in Resident Evil 6? This article fan-casts celebrities into the game’s biggest characters — from action heroes to mysterious villains. Get ready for some surprising picks!
+                    </p>
+                    <a href="#" class="btn btn-outline-dark">Read More</a>
+                </div>
+            </article>
+        </div>
+
+        <!-- Blog Post 3 -->
+        <div class="col-md-6">
+            <article class="blog-card bg-white rounded overflow-hidden position-relative">
+                <span class="blog-category">Animals</span>
+                <img src="img/cat.jpg" alt="Blog Post" class="blog-image">
+                <div class="p-4">
+                    <div class="blog-meta">
+                        <span>By Jill Valentine</span> |
+                        <span>22 August 2023</span>
+                    </div>
+                    <h2 class="blog-title">
+                        <a href="#" class="text-decoration-none text-dark">🐱 Which Resident Evil 6 Character Would Adopt a Cat?</a>
+                    </h2>
+                    <p class="blog-excerpt">
+                        In the middle of zombie outbreaks, who has the soft spot for a fluffy kitten? We match Resident Evil 6 characters with the cat breeds they'd most likely adopt — because even heroes need a furry friend to come home to.
+                    </p>
+                    <a href="#" class="btn btn-outline-dark">Read More</a>
+                </div>
+            </article>
+        </div>
+
+        <!-- Blog Post 4 -->
+        <div class="col-md-6">
+            <article class="blog-card bg-white rounded overflow-hidden position-relative">
+                <span class="blog-category">Friendship</span>
+                <img src="img/friend.jpg" alt="Blog Post" class="blog-image">
+                <div class="p-4">
+                    <div class="blog-meta">
+                        <span>By Albert Wesker</span> |
+                        <span>5 January 2025</span>
+                    </div>
+                    <h2 class="blog-title">
+                        <a href="#" class="text-decoration-none text-dark">👥 Co-op Strategies for Duo Domination</a>
+                    </h2>
+                    <p class="blog-excerpt">
+                        Teamwork is key. Learn the best co-op tactics to survive the toughest moments, sync your attacks, and support your partner like a true BSAA or DSO agent.
+                    </p>
+                    <a href="#" class="btn btn-outline-dark">Read More</a>
+                </div>
+            </article>
+        </div>
+
+        <!-- Blog Post 5  -->
+        <div class="col-md-6">
+            <article class="blog-card bg-white rounded overflow-hidden position-relative">
+                <span class="blog-category">Horror History</span>
+                <img src="img/re vil.jpg" alt="Blog Post" class="blog-image">
+                <div class="p-4">
+                    <div class="blog-meta">
+                        <span>By Claire Redfield</span> |
+                        <span>1 January 2024</span>
+                    </div>
+                    <h2 class="blog-title">
+                        <a href="#" class="text-decoration-none text-dark">🧠 Fan Theories, Easter Eggs, and Hidden Lore</a>
+                    </h2>
+                    <p class="blog-excerpt">
+                        Think you’ve seen it all? Think again. We uncover the hidden secrets, subtle callbacks, and mind-blowing fan theories that make Resident Evil 6 one of the most layered entries in the franchise.
+                    </p>
+                    <a href="#" class="btn btn-outline-dark">Read More</a>
+                </div>
+            </article>
+        </div>
+
+        <!-- Blog Post 6  -->
+        <div class="col-md-6">
+            <article class="blog-card bg-white rounded overflow-hidden position-relative">
+                <span class="blog-category">Virus</span>
+                <img src="img/virus2.jpg" alt="Blog Post" class="blog-image">
+                <div class="p-4">
+                    <div class="blog-meta">
+                        <span>By Rebecca Chambers</span> |
+                        <span>12 April 2025</span>
+                    </div>
+                    <h2 class="blog-title">
+                        <a href="#" class="text-decoration-none text-dark">🧟 Behind the Bio-Terror: Exploring the C-Virus Origins</a>
+                    </h2>
+                    <p class="blog-excerpt">
+                        Dive deep into the chilling science behind the C-Virus—the biological weapon that turns cities into war zones. This article explores how the virus was engineered, its connection to previous outbreaks, and the terrifying transformations it causes.
+                    </p>
+                    <a href="#" class="btn btn-outline-dark">Read More</a>
+                </div>
+            </article>
+        </div>
+       
+    </div>
+</div>
+
+<!-- Pagination -->
+    <nav class="mt-5">
+        <ul class="pagination justify-content-center">
+            <li class="page-item disabled">
+                <a class="page-link" href="#" tabindex="-1">Previous</a>
+            </li>
+            <li class="page-item active"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item">
+                <a class="page-link" href="#">Next</a>
+            </li>
+        </ul>
+    </nav>
+</div>
+
+<!-- Instagram Section -->
+<!-- Add this CSS in the <style> section in the head -->
+<style>
+    .instagram-section {
+        padding: 50px 0;
+        background: linear-gradient(to bottom, #fff, #f5f5f5);  /* Add gradient background */
+    }
+    
+    .instagram-title {
+        font-family: 'Playfair Display', serif;
+        margin-bottom: 30px;
+        color: #333;
+        position: relative;  /* Add position relative */
+    }
+    
+    .instagram-title:after {  /* Add decorative line */
+        content: '';
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 50px;
+        height: 2px;
+        background: #c5a47e;
+    }
+    
+    .instagram-grid {
+        display: flex;
+        overflow-x: auto;
+        gap: 0;
+        scrollbar-width: none; /* Firefox */
+    }
+    
+    .instagram-grid::-webkit-scrollbar {
+        display: none; /* Chrome, Safari, Edge */
+    }
+    
+    .instagram-grid .col-2 {
+        flex: 0 0 auto;
+        width: 16.666%;
+        transition: opacity 0.3s;
+    }
+    
+    .instagram-grid img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        transition: transform 0.3s;
+    }
+    
+    .instagram-grid a:hover img {
+        transform: scale(1.05);
+        opacity: 0.8;
+    }
+</style>
+
+<!-- Update the Instagram section HTML -->
+<section class="instagram-section">
+    <div class="container">
+        <h2 class="instagram-title text-center">INSTAGRAM</h2>
+        <div class="instagram-grid">
+            <div class="col-2">
+                <a href="#" target="_blank">
+                    <img src="img/herbs.jpg" alt="Instagram Post 1">
+                </a>
+            </div>
+            <div class="col-2">
+                <a href="#" target="_blank">
+                    <img src="img/rose.jpg" alt="Instagram Post 2">
+                </a>
+            </div>
+            <div class="col-2">
+                <a href="#" target="_blank">
+                    <img src="img/adwong.jpg" alt="Instagram Post 3">
+                </a>
+            </div>
+            <div class="col-2">
+                <a href="#" target="_blank">
+                    <img src="img/wall.jpg" alt="Instagram Post 4">
+                </a>
+            </div>
+            <div class="col-2">
+                <a href="#" target="_blank">
+                    <img src="img/vill.jpg" alt="Instagram Post 5">
+                </a>
+            </div>
+            <div class="col-2">
+                <a href="#" target="_blank">
+                    <img src="img/re4.jpg" alt="Instagram Post 6">
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<!-- Add this to your existing style section -->
+<style>
+    .footer {
+        background: linear-gradient(rgba(0, 0, 0, 0.564), rgba(0, 0, 0, 0.858)), url('img//re.jpg') center 35% no-repeat;
+        background-size: cover;
+        background-position: center;
+        padding: 60px 0 30px;
+        color: #fff;
+        margin-top: 50px;
+    }
+
+    .footer-content {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 40px;
+        margin-bottom: 40px;
+    }
+
+    .footer-section h3 {
+        font-family: 'Playfair Display', serif;
+        font-size: 24px;
+        margin-bottom: 20px;
+        color: #c5a47e;
+    }
+
+    .footer-section p {
+        color: #bbb;
+        line-height: 1.8;
+    }
+
+    .footer-social a {
+        color: #fff;
+        margin-right: 15px;
+        font-size: 18px;
+        transition: color 0.3s;
+    }
+
+    .footer-social a:hover {
+        color: #c5a47e;
+    }
+
+    .footer-bottom {
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        padding-top: 20px;
+        text-align: center;
+        color: #888;
+    }
+
+    .top-link {
+        color: #c5a47e;
+        text-decoration: none;
+        font-family: 'Montserrat', sans-serif;
+        transition: color 0.3s;
+    }
+
+    .top-link:hover {
+        color: #fff;
+    }
+</style>
+
+<!-- Replace the existing footer with this new one -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About Us</h3>
+                <p>Resident Evil 6 Blog was born from the ashes of the ordinary — a digital refuge carved from chaos, where tales of life, exploration, and creative survival are chronicled like classified files.</p>
+                <div class="footer-social mt-4">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-pinterest"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Latest Posts</h3>
+                <p>• 💀 Survival Tips & Tricks for Every Campaign</p>
+                <p>• 🧬 In-Depth Story Analysis & Timeline Connections</p>
+                <p>• 🎮 Best Weapons Ranked: From Pistols to RPGs</p>
+                <p>• 👥 Co-op Strategies for Duo Domination</p>
+                <p>• 🧠 Fan Theories, Easter Eggs, and Hidden Lore</p>
+                <p>• 🧟 Behind the Bio-Terror: Exploring the C-Virus Origins</p>
+            </div>
+            <div class="footer-section">
+                <h3>Newsletter</h3>
+                <p>Subscribe to our newsletter and get the latest updates straight to your inbox.</p>
+                <div class="input-group mt-3">
+                    <input type="email" class="form-control" placeholder="Your email address">
+                    <button class="btn btn-outline-light" type="button">Subscribe</button>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="d-flex justify-content-between align-items-center">
+                <p class="m-0">© 2023 Resident Evil 6 Blog. All Rights Reserved</p>
+                <a href="#" class="top-link">Back to Top ↑</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Bootstrap JS and dependencies -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
